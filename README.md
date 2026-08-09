@@ -5,13 +5,13 @@
 ## 安装
 
 ```bash
-npm install "git+https://github.com/doohuan-ai/enterprise-navigation.git#v0.1.0"
+npm install "https://github.com/doohuan-ai/enterprise-navigation/archive/refs/tags/v0.1.3.tar.gz"
 ```
 
 使用 Bun 的项目：
 
 ```bash
-bun add "git+https://github.com/doohuan-ai/enterprise-navigation.git#v0.1.0"
+bun add "https://github.com/doohuan-ai/enterprise-navigation/archive/refs/tags/v0.1.3.tar.gz"
 ```
 
 ## 使用
