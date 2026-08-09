@@ -317,7 +317,12 @@ export function EnterpriseNavigation(props: EnterpriseNavigationProps) {
   if (mode === 'console') {
     desktopActions = slots?.desktopActions
   } else {
-    desktopActions = <MarketingActions {...props} />
+    desktopActions = (
+      <>
+        {slots?.desktopActions}
+        <MarketingActions {...props} />
+      </>
+    )
   }
 
   return (

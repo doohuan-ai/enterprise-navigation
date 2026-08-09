@@ -278,7 +278,10 @@ function EnterpriseNavigation(props) {
   if (mode === "console") {
     desktopActions = slots?.desktopActions;
   } else {
-    desktopActions = /* @__PURE__ */ jsx(MarketingActions, { ...props });
+    desktopActions = /* @__PURE__ */ jsxs(Fragment, { children: [
+      slots?.desktopActions,
+      /* @__PURE__ */ jsx(MarketingActions, { ...props })
+    ] });
   }
   return /* @__PURE__ */ jsxs("header", { className: classes, style: headerStyle, children: [
     /* @__PURE__ */ jsx("div", { className: "dh-nav__frame", "data-floated": isScrolled || void 0, children: /* @__PURE__ */ jsxs("div", { className: "dh-nav__inner", "data-floated": isScrolled || void 0, children: [
