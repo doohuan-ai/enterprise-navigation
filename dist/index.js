@@ -202,6 +202,7 @@ function EnterpriseNavigation(props) {
   const navRef = useRef(null);
   const mobileTriggerRef = useRef(null);
   const mobileCloseRef = useRef(null);
+  const mobileDrawerRef = useRef(null);
   const model = useMemo(
     () => createEnterpriseNavigationModel(
       origins,
@@ -235,6 +236,22 @@ function EnterpriseNavigation(props) {
       }
     };
     const onKeyDown = (event) => {
+      if (mobileOpen && event.key === "Tab") {
+        const focusable = mobileDrawerRef.current?.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable?.length) {
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }
+      }
       if (event.key !== "Escape") return;
       setOpenDropdown(null);
       if (mobileOpen) {
@@ -365,6 +382,7 @@ function EnterpriseNavigation(props) {
           /* @__PURE__ */ jsxs(
             "div",
             {
+              ref: mobileDrawerRef,
               id: "dh-navigation-mobile-drawer",
               className: "dh-nav__mobile-drawer",
               role: "dialog",

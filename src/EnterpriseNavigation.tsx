@@ -226,6 +226,7 @@ export function EnterpriseNavigation(props: EnterpriseNavigationProps) {
   const navRef = useRef<HTMLElement>(null)
   const mobileTriggerRef = useRef<HTMLButtonElement>(null)
   const mobileCloseRef = useRef<HTMLButtonElement>(null)
+  const mobileDrawerRef = useRef<HTMLDivElement>(null)
   const model = useMemo(
     () =>
       createEnterpriseNavigationModel(
@@ -268,6 +269,22 @@ export function EnterpriseNavigation(props: EnterpriseNavigationProps) {
       }
     }
     const onKeyDown = (event: KeyboardEvent) => {
+      if (mobileOpen && event.key === 'Tab') {
+        const focusable = mobileDrawerRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+        if (focusable?.length) {
+          const first = focusable[0]
+          const last = focusable[focusable.length - 1]
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault()
+            last?.focus()
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault()
+            first?.focus()
+          }
+        }
+      }
       if (event.key !== 'Escape') return
       setOpenDropdown(null)
       if (mobileOpen) {
@@ -401,6 +418,7 @@ export function EnterpriseNavigation(props: EnterpriseNavigationProps) {
           onClick={closeMenus}
         />
         <div
+          ref={mobileDrawerRef}
           id='dh-navigation-mobile-drawer'
           className='dh-nav__mobile-drawer'
           role='dialog'
