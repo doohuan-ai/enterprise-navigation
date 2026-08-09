@@ -362,6 +362,12 @@ export function EnterpriseNavigation(props: EnterpriseNavigationProps) {
 
           <div className='dh-nav__side dh-nav__side--end'>
             <div className='dh-nav__desktop-actions'>{desktopActions}</div>
+            <div className='dh-nav__mobile-header-actions'>
+              {slots?.mobileHeaderActions}
+              {mode === 'marketing' &&
+                auth.status === 'authenticated' &&
+                auth.mobileHeaderAuthenticated}
+            </div>
             <button
               ref={mobileTriggerRef}
               type='button'

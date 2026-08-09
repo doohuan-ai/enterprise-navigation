@@ -35,6 +35,7 @@ export type EnterpriseNavigationAuth = {
   dashboardHref?: string
   showDashboardLink?: boolean
   desktopAuthenticated?: ReactNode
+  mobileHeaderAuthenticated?: ReactNode
   mobileAuthenticated?: ReactNode
 }
 
@@ -47,6 +48,7 @@ export type EnterpriseNavigationAssets = {
 export type EnterpriseNavigationSlots = {
   leading?: ReactNode
   desktopActions?: ReactNode
+  mobileHeaderActions?: ReactNode
   mobileActions?: ReactNode
 }
 

@@ -271,6 +271,12 @@
   display: none;
 }
 
+.dh-nav__mobile-header-actions {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
 .dh-nav__mobile-layer {
   position: fixed;
   z-index: 70;
@@ -415,6 +421,10 @@
 
   .dh-nav__mobile-trigger {
     display: inline-flex;
+  }
+
+  .dh-nav__mobile-header-actions {
+    display: flex;
   }
 }
 

@@ -323,6 +323,10 @@ function EnterpriseNavigation(props) {
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "dh-nav__side dh-nav__side--end", children: [
         /* @__PURE__ */ jsx("div", { className: "dh-nav__desktop-actions", children: desktopActions }),
+        /* @__PURE__ */ jsxs("div", { className: "dh-nav__mobile-header-actions", children: [
+          slots?.mobileHeaderActions,
+          mode === "marketing" && auth.status === "authenticated" && auth.mobileHeaderAuthenticated
+        ] }),
         /* @__PURE__ */ jsx(
           "button",
           {

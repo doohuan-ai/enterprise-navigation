@@ -33,6 +33,7 @@ type EnterpriseNavigationAuth = {
     dashboardHref?: string;
     showDashboardLink?: boolean;
     desktopAuthenticated?: ReactNode;
+    mobileHeaderAuthenticated?: ReactNode;
     mobileAuthenticated?: ReactNode;
 };
 type EnterpriseNavigationAssets = {
@@ -43,6 +44,7 @@ type EnterpriseNavigationAssets = {
 type EnterpriseNavigationSlots = {
     leading?: ReactNode;
     desktopActions?: ReactNode;
+    mobileHeaderActions?: ReactNode;
     mobileActions?: ReactNode;
 };
 type EnterpriseNavigationProps = {
