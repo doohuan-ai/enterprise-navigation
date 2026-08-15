@@ -49,7 +49,7 @@ function createEnterpriseNavigationModel(origins, labels, languagePathPrefix = "
       {
         id: "api-models",
         label: labels.apiModels,
-        href: joinOrigin(origins.api, "/pricing")
+        href: joinOrigin(origins.api, "/models")
       },
       {
         id: "api-docs",

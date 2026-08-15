@@ -40,7 +40,7 @@ describe('createEnterpriseNavigationModel', () => {
     ])
     expect(model.api.map((item) => item.href)).toEqual([
       'https://api.doohuan.com/',
-      'https://api.doohuan.com/pricing',
+      'https://api.doohuan.com/models',
       'https://api.doohuan.com/doc',
     ])
   })
