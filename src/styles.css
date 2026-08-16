@@ -33,18 +33,18 @@
 }
 
 /*
- * 非悬浮：贴近视口左右（Venice 式），不设 1600px 上限。
- * 悬浮动画沿用原 cubic-bezier(0.16, 1, 0.3, 1)，仅略加长时长。
+ * 非悬浮 max-width: 1600px → 悬浮 896px：与 new-api / 早期多焕导航同款收束动画。
+ * （若非悬浮用 max-width:none，视口→896 落差过大，动画会显得突兀。）
  */
 .dh-nav__frame {
   width: 100%;
-  max-width: none;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 2.5vw, 40px);
+  padding: 0 36px;
   pointer-events: auto;
   transition:
-    max-width 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    padding 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    max-width 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dh-nav__frame[data-floated] {
@@ -60,11 +60,11 @@
   padding: 0;
   background: transparent;
   transition:
-    height 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-radius 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    padding 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    height 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dh-nav__inner[data-floated] {
