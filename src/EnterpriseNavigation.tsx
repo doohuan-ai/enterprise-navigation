@@ -13,7 +13,8 @@ import type {
   EnterpriseNavigationProps,
 } from './types'
 
-const FLOAT_AFTER_PX = 120
+const FLOAT_ENTER_PX = 120
+const FLOAT_EXIT_PX = 40
 
 type OpenDropdown = null | 'aips' | 'api'
 
@@ -241,7 +242,12 @@ export function EnterpriseNavigation(props: EnterpriseNavigationProps) {
     let animationFrame = 0
     const apply = () => {
       animationFrame = 0
-      setIsScrolled(window.scrollY > FLOAT_AFTER_PX)
+      const y = window.scrollY
+      // 进出阈值不同，减少临界抖动；配合更长 CSS 过渡更顺。
+      setIsScrolled((prev) => {
+        if (prev) return y > FLOAT_EXIT_PX
+        return y > FLOAT_ENTER_PX
+      })
     }
     const onScroll = () => {
       if (animationFrame) return

@@ -32,20 +32,26 @@
   background: var(--dh-navigation-background);
 }
 
+/*
+ * 非悬浮：贴近视口左右（Venice 式），不设 1600px 上限。
+ * 悬浮：收成居中胶囊。时长与缓动偏阻尼，避免 max-width 骤缩发硬。
+ */
 .dh-nav__frame {
+  --dh-nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dh-nav-duration: 820ms;
   width: 100%;
-  max-width: 1600px;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0 clamp(20px, 2.5vw, 40px);
   pointer-events: auto;
   transition:
-    max-width 500ms cubic-bezier(0.16, 1, 0.3, 1),
-    padding 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    max-width var(--dh-nav-duration) var(--dh-nav-ease),
+    padding var(--dh-nav-duration) var(--dh-nav-ease);
 }
 
 .dh-nav__frame[data-floated] {
   max-width: 896px;
-  padding: 14px 12px 0;
+  padding: 16px 12px 0;
 }
 
 .dh-nav__inner {
@@ -56,11 +62,12 @@
   padding: 0;
   background: transparent;
   transition:
-    height 500ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-radius 500ms cubic-bezier(0.16, 1, 0.3, 1),
-    padding 500ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    height var(--dh-nav-duration) var(--dh-nav-ease),
+    border-radius var(--dh-nav-duration) var(--dh-nav-ease),
+    padding var(--dh-nav-duration) var(--dh-nav-ease),
+    background-color var(--dh-nav-duration) var(--dh-nav-ease),
+    box-shadow var(--dh-nav-duration) var(--dh-nav-ease),
+    border-color var(--dh-nav-duration) var(--dh-nav-ease);
 }
 
 .dh-nav__inner[data-floated] {

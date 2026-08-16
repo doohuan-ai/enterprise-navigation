@@ -62,7 +62,8 @@ function createEnterpriseNavigationModel(origins, labels, languagePathPrefix = "
 
 // src/EnterpriseNavigation.tsx
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-var FLOAT_AFTER_PX = 120;
+var FLOAT_ENTER_PX = 120;
+var FLOAT_EXIT_PX = 40;
 function ChevronIcon() {
   return /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", "aria-hidden": "true", className: "dh-nav__chevron", children: /* @__PURE__ */ jsx("path", { d: "m7 10 5 5 5-5" }) });
 }
@@ -215,7 +216,11 @@ function EnterpriseNavigation(props) {
     let animationFrame = 0;
     const apply = () => {
       animationFrame = 0;
-      setIsScrolled(window.scrollY > FLOAT_AFTER_PX);
+      const y = window.scrollY;
+      setIsScrolled((prev) => {
+        if (prev) return y > FLOAT_EXIT_PX;
+        return y > FLOAT_ENTER_PX;
+      });
     };
     const onScroll = () => {
       if (animationFrame) return;
